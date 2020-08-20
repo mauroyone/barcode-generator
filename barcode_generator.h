@@ -29,10 +29,10 @@
 #define HEIGHT 190
 
 #define HEADER "P1"
-#define COMENT '#'
-#define COMENT_P1 "The image size is"
-#define COMENT_P2 "width"
-#define COMENT_P3 "height"
+#define COMMENT '#'
+#define COMMENT_P1 "The image size is"
+#define COMMENT_P2 "width"
+#define COMMENT_P3 "height"
 
 typedef unsigned int uint;
 
