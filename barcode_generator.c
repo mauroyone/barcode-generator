@@ -111,7 +111,7 @@ void ask_for_numeric_code(char code[MAX_STRING])
     /* Asks for the barcode from STDIN, then it formats as needed
 	   removing the '\n' from fgets() and replacing it for a '\0' */
 	
-	printf(MSJ_ENTER_CODE);
+	//printf(MSJ_ENTER_CODE);
     fgets(code, MAX_STRING, stdin);
 	if(code[strlen(code)-1]=='\n')
 		code[strlen(code)-1]='\0';
@@ -121,12 +121,12 @@ void ask_for_dimensions(char aux_width[], char aux_height[])
 {
 	/* Asks for the dimensions from STDIN, then it formats as needed
 	   removing the '\n' from fgets() and replacing it for a '\0' */
-	printf(MSJ_ENTER_WIDTH);
+	//printf(MSJ_ENTER_WIDTH);
 	fgets(aux_width, MAX_STRING, stdin);
 	if (aux_width[strlen(aux_width)-1] == '\n')
 		aux_width[strlen(aux_width)-1] = '\0';
 
-	printf(MSJ_ENTER_HEIGHT);
+	//printf(MSJ_ENTER_HEIGHT);
 	fgets(aux_height, MAX_STRING, stdin);
     if (aux_height[strlen(aux_height)-1]=='\n')
         aux_height[strlen(aux_height)-1]='\0';
