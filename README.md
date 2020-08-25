@@ -193,5 +193,12 @@ Representation of a 5x5 pixel graph. A black arrow pointing to the top right cor
 ## How to compile
 The compiler used is gcc:
 
-`gcc -o barcode_generator.exe barcode_generator.c -Wall -ansi -pedantic`
+`gcc -o barcode_generator.exe barcode_generator.c -Wall -ansi -pedantic` <br>
 `gcc -o pbm_generator.exe pbm_generator.c -Wall -ansi -pedantic`
+
+## How to use
+On Linux: ./ barcode_generator.exe | ./pbm_generator.exe > my_pbm.pbm
+On Windows: barcode_generator.exe | pbm_generator.exe > my_pbm.pbm
+
+On both cases, a product code will be asked as well as the dimensions for the image file.
+If the dimensions are omitted, the default values are going to be used.
