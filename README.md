@@ -120,7 +120,7 @@ The codification styles depends on the first digit:
   <tr>
     <th> 1 </th>
     <th> LLGLGG </th>
-    <th> </th>
+    <th> RRRRRR </th>
   </tr>
   <tr>
     <th> 2 </th>
