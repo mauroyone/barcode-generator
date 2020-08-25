@@ -1,5 +1,5 @@
 # barcode-generator
-This project was build in C and uses the EAN-13 system.
+This project was build in ANSI-C and uses the EAN-13 system.
 
 There are two parts:
   - The first one receives a product number (thirteen digits) from STDIN and returns a 95 secuence of 'B/W'
@@ -190,4 +190,8 @@ Example:
 Representation of a 5x5 pixel graph. A black arrow pointing to the top right corner.
 
 
-gcc -o barcode_generator.exe tp1_parte1 tp1_parte2 -Wall -ansi -pedantic
+## How to compile
+The compiler used is gcc:
+
+`gcc -o barcode_generator.exe barcode_generator.c -Wall -ansi -pedantic`
+`gcc -o pbm_generator.exe pbm_generator.c -Wall -ansi -pedantic`
