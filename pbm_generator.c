@@ -7,14 +7,15 @@
 
 status_t convert_bw_to_01(char encoded_string[MAX_STRING])
 {
+	/* Converts all 'W' to '0' and 'B' to '1' */
     size_t i = 0;
     
-    if (strlen(encoded_string) != 95)
+    if (strlen(encoded_string) != COMPLETE_SECUENCE_LEN)
     {
-		fputs(MSJ_ERROR_DIGIT_NUMBER,stderr);
+		fputs(MSJ_ERROR_DIGIT_NUMBER, stderr);
 		return ERROR_NUMBER_OF_DIGITS;
 	}
-    for(i=0; i < 95; i++)
+    for(i=0; i < COMPLETE_SECUENCE_LEN; i++)
     {
         if(encoded_string[i] == WHITE)
         {
@@ -28,7 +29,7 @@ status_t convert_bw_to_01(char encoded_string[MAX_STRING])
 			}
 			else 
 			{
-			fputs(MSJ_ERROR_INPUT_DATA,stderr);
+			fputs(MSJ_ERROR_INPUT_DATA, stderr);
 			return ERROR_INPUT_DATA;
 			} 
 		}       
@@ -39,13 +40,15 @@ status_t convert_bw_to_01(char encoded_string[MAX_STRING])
 
 void print_pbm_header (int width, int height)
 {
+	/* Prints the header */
     puts(HEADER);
-    putchar('\n');
+    printf("%c %s %i %s %i %s \n", COMMENT, COMMENT_P1, width, COMMENT_P2, height, COMMENT_P3);
     printf("%i %i \n", width, height);
-    printf("%c %s %i %s %i %s \n",COMMENT, COMMENT_P1, width, COMMENT_P2, height, COMMENT_P3);
 }
+
 void assign_dimensions (char const aux_width[], char const aux_height[], uint *width, uint *height)
 {
+	/* Assigns the dimensions taken from width and height */
 	char *temp;
 	
 	*width = strtol(aux_width, &temp, 10);
@@ -59,14 +62,16 @@ void assign_dimensions (char const aux_width[], char const aux_height[], uint *w
 		*height = HEIGHT;
 	}
 }
+
 void print_bars(char value, int number)
 {
     size_t i;
     for(i=0; i < number; i++)
     {
         putchar(value);
+		putchar(' ');
     }
-    putchar('\t');
+    //putchar('\t');
 }
 
 int main(void)
@@ -75,32 +80,36 @@ int main(void)
         uint width, height, number;
         char string_b_w[MAX_STRING], string_borders[MAX_STRING];
         char aux_width[MAX_STRING], aux_height[MAX_STRING];
-        for(i=0; i < 95; i++){
+
+        for (i=0; i < COMPLETE_SECUENCE_LEN; i++){
 			if(i == 0 || i == 2 || i == 46 || i == 48 || i == 92 || i == 94)
 				string_borders[i] = BLACK;
 			else
 				string_borders[i] = WHITE;
 		}
 		string_borders[i] = '\0';
+
         fgets(string_b_w, MAX_STRING, stdin);
         fgets(aux_width, MAX_STRING, stdin);
 		fgets(aux_height, MAX_STRING, stdin);
 
-        /* At this point it only takes the WB string */
         if(string_b_w[strlen(string_b_w)-1] == '\n')
             string_b_w[strlen(string_b_w)-1] = '\0';
-        if(convert_bw_to_01(string_b_w) != OK)
+        
+		if(convert_bw_to_01(string_b_w) != OK)
         {
 			fputs(MSJ_ERROR_EXIT, stderr);
 			return EXIT_FAILURE;
+		
 		}
         if(convert_bw_to_01(string_borders) != OK)
         {
 			fputs(MSJ_ERROR_EXIT, stderr);
 			return EXIT_FAILURE;
 		}
+
 		assign_dimensions(aux_width, aux_height, &width, &height);
-        print_pbm_header(width-width%95, height);
+        print_pbm_header(width, height);
 
         number = width/95;
         for(i=0; i < height*0.8; i++)
@@ -109,13 +118,15 @@ int main(void)
 			{
 				print_bars(string_b_w[j], number);
 			}
+			putchar('\n');
 		}
-		for(i=0; i < height; i++)
+		for(i; i < height; i++)
 		{
 			for(j=0; j < strlen(string_borders); j++)
 			{	
 				print_bars(string_borders[j], number);
 			}
+			putchar('\n');
 		}
         return 0;
 }

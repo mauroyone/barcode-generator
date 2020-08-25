@@ -3,8 +3,8 @@
 
 #define CODE_LENGHT 13
 #define MAX_STRING 100
-#define START 1
-#define MIDDLE 7
+#define START 0
+#define MIDDLE 6
 #define END 12
 #define G_REPRESENTATION 'G'
 #define L_REPRESENTATION 'L'
@@ -15,6 +15,7 @@
 #define CHARACTER_0 '0'
 #define CHARACTER_1 '1'
 #define CHAR_TO_INT 48
+#define COMPLETE_SECUENCE_LEN 95
 
 #define MASK 0x01
 

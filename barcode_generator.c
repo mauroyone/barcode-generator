@@ -7,16 +7,16 @@
 static const uint str_digits[]=
 {
     /* Taking W=0 & B=1 the R code is: */
-    0x72,	/*BBB WWBW*/
-	0x66,	/*BBW WBBW*/
-	0x6C,	/*BBW BBWW*/
-	0x42,	/*BWW WWBW*/
-	0x5C,	/*BWB BBWW*/
-	0x4E,	/*BWW BBBW*/
-	0x50,	/*BWB WWWW*/
-	0x44,	/*BWW WBWW*/
-	0x48,	/*BWW BWWW*/
-	0x74	/*BBB WBWW*/
+    0x72,	/*0: BBB WWBW*/
+	0x66,	/*1: BBW WBBW*/
+	0x6C,	/*2: BBW BBWW*/
+	0x42,	/*3: BWW WWBW*/
+	0x5C,	/*4: BWB BBWW*/
+	0x4E,	/*5: BWW BBBW*/
+	0x50,	/*6: BWB WWWW*/
+	0x44,	/*7: BWW WBWW*/
+	0x48,	/*8: BWW BWWW*/
+	0x74	/*9: BBB WBWW*/
 };
 
 const uint black_white_secuence (digits_t digit)
@@ -42,16 +42,16 @@ static const uint str_first_digit[]=
 {
     /* Codification depending on the first digit.
 	   Taking L=0 G=1 */
-    0x00,  /*LLLLLL*/
-	0x0B,  /*LLGLGG*/
-	0x0D,  /*LLGGLG*/
-	0x0E,  /*LLGGGL*/
-	0x13,  /*LGLLGG*/
-	0x19,  /*LGGLLG*/
-	0x1C,  /*LGGGLL*/
-	0x15,  /*LGLGLG*/
-	0x16,  /*LGLGGL*/
-	0x1A   /*LGGLGL*/
+    0x00,  /*0: LLLLLL*/
+	0x0B,  /*1: LLGLGG*/
+	0x0D,  /*2: LLGGLG*/
+	0x0E,  /*3: LLGGGL*/
+	0x13,  /*4: LGLLGG*/
+	0x19,  /*5: LGGLLG*/
+	0x1C,  /*6: LGGGLL*/
+	0x15,  /*7: LGLGLG*/
+	0x16,  /*8: LGLGGL*/
+	0x1A   /*9: LGGLGL*/
 };
 
 const uint twelve_digit_representation (first_digit_t first_digit)
@@ -79,7 +79,7 @@ int main (void)
 	first_digit_t first_digit;
 	uint representation_type;
 
-    ask_for_numeric_code(barcode_number);
+	ask_for_numeric_code(barcode_number);
     ask_for_dimensions(aux_width, aux_height);
 	
 	if (code_validation(barcode_number) != OK)
@@ -90,8 +90,8 @@ int main (void)
 	
 	first_digit = barcode_number[0]-CHAR_TO_INT;
 	representation_type = twelve_digit_representation(first_digit);
-    define_codification(encode, representation_type);
-    generate_secuence(barcode_number, encode, encoded_string_b_w);
+	define_codification(encode, representation_type);
+	generate_secuence(barcode_number, encode, encoded_string_b_w);
     
 	if (validate_dimensions(aux_width, aux_height) != OK)
 	{
@@ -184,7 +184,7 @@ void define_codification(char c[MAX_STRING], uint n)
 
     size_t i;
 
-    for(i=START; i < MIDDLE; i++)
+    for (i=START; i < MIDDLE; i++)
 	{
 		if (n&(MASK<<((MIDDLE-1)-i)))
             c[i] = G_REPRESENTATION;
@@ -205,15 +205,15 @@ void generate_secuence(char const code[MAX_STRING], char const codification[MAX_
 	   Then prints it to STDOUT*/
 
     digits_t digit;
-    size_t i, j, aux;
+    size_t i, j=0, aux;
     uint black_or_white;
     
-    string_b_w[0] = BLACK;
-	string_b_w[1] = WHITE;
-	string_b_w[2] = BLACK;
-	string_b_w[3] = '\0';
+    string_b_w[j++] = BLACK;
+	string_b_w[j++] = WHITE;
+	string_b_w[j++] = BLACK;
+	string_b_w[j++] = '\0';
 
-    for(i=0; i < END+1; i++)
+    for(i=START; i <= END; i++)
     {
 		digit = code[i]-CHAR_TO_INT;
 		black_or_white = black_white_secuence(digit);
@@ -244,12 +244,12 @@ void generate_secuence(char const code[MAX_STRING], char const codification[MAX_
 			break;
 			case SEP:
 			{
-				string_b_w[45] = WHITE;
-				string_b_w[46] = BLACK;
-				string_b_w[47] = WHITE;
-				string_b_w[48] = BLACK;
-				string_b_w[49] = WHITE;
-				string_b_w[50] = '\0';
+				string_b_w[j++] = WHITE;
+				string_b_w[j++] = BLACK;
+				string_b_w[j++] = WHITE;
+				string_b_w[j++] = BLACK;
+				string_b_w[j++] = WHITE;
+				string_b_w[j++] = '\0';
 			}
 			break;
 			case R_REPRESENTATION:
@@ -265,10 +265,10 @@ void generate_secuence(char const code[MAX_STRING], char const codification[MAX_
 			break;
 		}
 	}
-	string_b_w[j] = BLACK;
-	string_b_w[j+1] = WHITE;
-	string_b_w[j+2] = BLACK;
-	string_b_w[j+3] = '\0';
+	string_b_w[j++] = BLACK;
+	string_b_w[j++] = WHITE;
+	string_b_w[j++] = BLACK;
+	string_b_w[j++] = '\0';
 	puts(string_b_w);
 }
 
