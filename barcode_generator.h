@@ -3,27 +3,30 @@
 
 #define CODE_LENGHT 13
 #define MAX_STRING 100
-#define START 0
-#define MIDDLE 6
+#define START 1
+#define MIDDLE 7
 #define END 12
-#define REPRESENTATION_G 'G'
-#define REPRESENTATION_L 'L'
-#define REPRESENTATION_R 'R'
+#define G_REPRESENTATION 'G'
+#define L_REPRESENTATION 'L'
+#define R_REPRESENTATION 'R'
 #define SEP '|'
 #define WHITE 'W'
 #define BLACK 'B'
 #define CHARACTER_0 '0'
 #define CHARACTER_1 '1'
+#define CHAR_TO_INT 48
 
 #define MASK 0x01
 
-#define MSJ_ENTER_CODE "Enter the numeric code"
+#define MSJ_ENTER_CODE "Enter the numeric code:\n"
+#define MSJ_ENTER_WIDTH "Enter PBM width:\n"
+#define MSJ_ENTER_HEIGHT "Enter PBM height:\n"
 
-#define MSJ_ERROR_EXIT "The program will exit"
-#define MSJ_ERROR_DIGIT_NUMBER "Error: The number of entered digits is incorrect"
-#define MSJ_ERROR_INPUT_DATA "Error: At least one value is incorrect"
-#define MSJ_ERROR_REDUNDANCY "Error: The redundancy value is incorrect"
-#define MSJ_DEFAULT_VALUES "Setting default values"
+#define MSJ_ERROR_EXIT "The program will exit\n"
+#define MSJ_ERROR_DIGIT_NUMBER "Error: The number of entered digits is incorrect\n"
+#define MSJ_ERROR_INPUT_DATA "Error: At least one value is incorrect\n"
+#define MSJ_ERROR_REDUNDANCY "Error: The redundancy value is incorrect\n"
+#define MSJ_DEFAULT_VALUES "Setting default values\n"
 
 #define WIDTH 380
 #define HEIGHT 190
@@ -72,13 +75,13 @@ typedef enum
 	first_digit_NINE
 } first_digit_t;
 
-const uint BoW (digits_t digit);
+const uint black_white_secuence (digits_t digit);
 const uint twelve_digit_representation (first_digit_t first_digit);
 void ask_for_numeric_code(char code[MAX_STRING]);
 void ask_for_dimensions(char aux_width[], char aux_height[]);
 status_t code_validation(char const string[]);
 void define_codification(char c[MAX_STRING], uint n);
-void generate_string_B_W(char const code[MAX_STRING], char const codification[MAX_STRING], char string_b_w[MAX_STRING]);
+void generate_secuence(char const code[MAX_STRING], char const codification[MAX_STRING], char string_b_w[MAX_STRING]);
 status_t validate_dimensions(char const aux_width[], char const aux_height[]);
 
 #endif
