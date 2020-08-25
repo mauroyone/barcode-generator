@@ -28,18 +28,75 @@ The last twelve digits are presented by seven vertical bars, the first one defin
 ## Encoded types
 There are three posible codifications for each digit:
 
-Dıgit | L Code  | G Code  | R Code
-  0   | WWWBBWB | WBWWBBB | BBBWWBW
-  1   | WWBBWWB | WBBWWBB | BBWWBBW
-  2   | WWBWWBB | WWBBWBB | BBWBBWW
-  3   | WBBBBWB | WBWWWWB | BWWWWBW
-  4   | WBWWWBB | WWBBBWB | BWBBBWW
-  5   | WBBWWWB | WBBBWWB | BWWBBBW
-  6   | WBWBBBB | WWWWBWB | BWBWWWW
-  7   | WBBBWBB | WWBWWWB | BWWWBWW
-  8   | WBBWBBB | WWWBWWB | BWWBWWW
-  9   | WWWBWBB | WWBWBBB | BBBWBWW
-  
+<table>
+  <tr>
+    <th> Digit </th>
+    <th> L Code </th>
+    <th> G Code </th>
+    <th> R Code </th>
+  </tr>
+  <tr>
+    <th> 0 </th>
+    <th> WWWBBWB </th>
+    <th> WBWWBBB </th>
+    <th> BBBWWBW </th>
+  </tr>
+  <tr>
+    <th> 1 </th>
+    <th> WWBBWWB </th>
+    <th> WBBWWBB </th>
+    <th> BBWWBBW </th>
+  </tr>
+  <tr>
+    <th> 2 </th>
+    <th> WWBWWBB </th>
+    <th> WWBBWBB </th>
+    <th> BBWBBWW </th>
+  </tr>
+  <tr>
+    <th> 3 </th>
+    <th> WBBBBWB </th>
+    <th> WBWWWWB </th>
+    <th> BWWWWBW </th>
+  </tr>
+  <tr>
+    <th> 4 </th>
+    <th> WBWWWBB </th>
+    <th> WWBBBWB </th>
+    <th> BWBBBWW </th>
+  </tr>
+  <tr>
+    <th> 5 </th>
+    <th> WBBWWWB </th>
+    <th> WBBBWWB </th>
+    <th> BWWBBBW </th>
+  </tr>
+  <tr>
+    <th> 6 </th>
+    <th> WBWBBBB </th>
+    <th> WWWWBWB </th>
+    <th> BWBWWWW </th>
+  </tr>
+  <tr>
+    <th> 7 </th>
+    <th> WBBBWBB </th>
+    <th> WWBWWWB </th>
+    <th> BWWWBWW </th>
+  </tr>
+  <tr>
+    <th> 8 </th>
+    <th> WBBWBBB </th>
+    <th> WWWBWWB </th>
+    <th> BWWBWWW </th>
+  </tr>
+  <tr>
+    <th> 9 </th>
+    <th> WWWBWBB </th>
+    <th> WWBWBBB </th>
+    <th> BBBWBWW </th>
+  </tr>
+</table>
+
 Where B is black and represents a filled bar and W is white and represents an empty bar.
 Check that each digit is represented by seven bar.
 
@@ -48,17 +105,64 @@ Note: the R code is the L code complement while G code is R's reverse. This mean
 
 ## Barcode codification
 The codification styles depends on the first digit:
-First dıgit | First chunk | Second chunk
-0           | LLLLLL      | RRRRRR
-1           | LLGLGG      | RRRRRR
-2           | LLGGLG      | RRRRRR
-3           | LLGGGL      | RRRRRR
-4           | LGLLGG      | RRRRRR
-5           | LGGLLG      | RRRRRR
-6           | LGGGLL      | RRRRRR
-7           | LGLGLG      | RRRRRR
-8           | LGLGGL      | RRRRRR
-9           | LGGLGL      | RRRRRR
+
+<table>
+  <tr>
+    <th> First digit </th>
+    <th> Firts chunk </th>
+    <th> Second chunk </th>
+  </tr>
+  <tr>
+    <th> 0 </th>
+    <th> LLLLLL </th>
+    <th> RRRRRR </th>
+  </tr>
+  <tr>
+    <th> 1 </th>
+    <th> LLGLGG </th>
+    <th> </th>
+  </tr>
+  <tr>
+    <th> 2 </th>
+    <th> LLGGLG </th>
+    <th> RRRRRR </th>
+  </tr>
+  <tr>
+    <th> 3 </th>
+    <th> LLGGGL </th>
+    <th> RRRRRR </th>
+  </tr>
+  <tr>
+    <th> 4 </th>
+    <th> LGLLGG </th>
+    <th> RRRRRR </th>
+  </tr>
+  <tr>
+    <th> 5 </th>
+    <th> LGGLLG </th>
+    <th> RRRRRR </th>
+  </tr>
+  <tr>
+    <th> 6 </th>
+    <th> LGGGLL </th>
+    <th> RRRRRR </th>
+  </tr>
+  <tr>
+    <th> 7 </th>
+    <th> LGLGLG </th>
+    <th> RRRRRR </th>
+  </tr>
+  <tr>
+    <th> 8 </th>
+    <th> LGLGGL </th>
+    <th> RRRRRR </th>
+  </tr>
+  <tr>
+    <th> 9 </th>
+    <th> LGGLGL</th>
+    <th> RRRRRR </th>
+  </tr>
+</table>
 
 The lateral guards always use a BWB codification and the middle one a BWBWB. This means, each barcode has 12*7 + 2*3 + 1*5 = 95 bars.
 
@@ -72,15 +176,16 @@ In addition, comments can be added if the line starts with a '#' symbol.
 
 Example:
 
-P1
-# Comentario
-5 5
-# La imagen es de 5 de ancho por 5 de alto.
-0 1 1 1 1
-0 0 0 1 1
-0 0 1 0 1
-0 1 0 0 1
-1 0 0 0 0
+`P1`<br>
+`# Comentario`<br>
+`5 5`<br>
+`# La imagen es de 5 de ancho por 5 de alto.`<br>
+`0 1 1 1 1`<br>
+`0 0 0 1 1`<br>
+`0 0 1 0 1`<br>
+`0 1 0 0 1`<br>
+`1 0 0 0 0`<br>
+
 
 Representation of a 5x5 pixel graph. A black arrow pointing to the top right corner.
 
