@@ -177,9 +177,8 @@ In addition, comments can be added if the line starts with a '#' symbol.
 Example:
 
 `P1`<br>
-`# Comentario`<br>
-`5 5`<br>
 `# La imagen es de 5 de ancho por 5 de alto.`<br>
+`5 5`<br>
 `0 1 1 1 1`<br>
 `0 0 0 1 1`<br>
 `0 0 1 0 1`<br>
